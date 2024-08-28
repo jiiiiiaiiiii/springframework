@@ -79,12 +79,29 @@
         Ch05. Controller(헤더값 및 쿠키 설정)
       </button>
     </h2>
-    <div id="ch05" class="accordion-collapse collaps show" data-bs-parent="#accordionMenu">
+    <div id="ch05" class="accordion-collapse collaps" data-bs-parent="#accordionMenu">
       <div class="accordion-body">
       	<ul>
       		<li><a href="${pageContext.request.contextPath}/ch05/header">요청 헤더값 얻기</a></li>
       		<li><a href="${pageContext.request.contextPath}/ch05/createCookie">쿠키 생성</a></li>
       		<li><a href="${pageContext.request.contextPath}/ch05/readCookie">쿠키 읽기</a></li>
+      	</ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#ch06" aria-expanded="false" aria-controls="#ch06">
+        Ch06. 포워드와 리다이렉트
+      </button>
+    </h2>
+    <div id="ch06" class="accordion-collapse collaps show" data-bs-parent="#accordionMenu">
+      <div class="accordion-body">
+      	<ul>
+      		<li><a href="${pageContext.request.contextPath}/ch06/forward">포워드</a></li>
+      		<li><a href="${pageContext.request.contextPath}/ch06/redirect">리다이렉트</a></li>
+      		<li><a href="${pageContext.request.contextPath}/ch06/sessionData">다른 요청시 세션 데이터 이용</a></li>
       	</ul>
       </div>
     </div>
