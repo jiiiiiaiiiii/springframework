@@ -5,7 +5,9 @@
 <div class="card">
 	<div class="card-header">쿠키값 읽기</div>
 	<div class="card-body">
-
+		<p>mid: ${mid}</p>
+		<p>memail: ${memail}</p>
+		<p></p>
 	</div>
 </div>
 
