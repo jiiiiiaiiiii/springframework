@@ -1,0 +1,122 @@
+<?xml version="1.0"  encoding="UTF-8"?> 
+<!-- Root Element -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <!--Maven Version -->
+  <modelVersion>4.0.0</modelVersion>
+   <!-- Company Domain Name -->
+  <groupId>com.mycompany</groupId>
+  <!-- Context Name: 보통 Project Name과 통일시킴 -->
+  <artifactId>springframework</artifactId>
+  <!-- Project Version -->
+  <version>1.0.0</version>
+  <!-- Final Builded File, 최종 빌드 후의 산출물 형태 -->
+  <packaging>war</packaging>
+  
+  <!-- 반복되는 값을 참조하는 변수 선언 -->
+  <properties>
+  	<!-- '변수명'을 태그처럼 작성(예약된 태그가 아님) -->
+  	<springframework-version>5.3.29</springframework-version>
+  </properties>
+  
+  
+  <!-- 프로젝트에서 의존하는 외부 라이브러리들을 설정: 파일 저장 시, 자동 다운로드 -->
+	<dependencies>
+		<!-- 서블릿 4.0 라이브러리 설정 -->
+	    <dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>4.0.1</version>
+		    <!-- provided: build 시, 사용되나 최종산출물(.war)에는 미포함 => 서블릿은 WAS에서 기제공됨 -->
+		    <scope>provided</scope>
+		</dependency>
+		<!-- JSP 2.3 라이브러리 설정 -->
+		<dependency>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>javax.servlet.jsp-api</artifactId>
+		    <version>2.3.3</version>
+		    <scope>provided</scope>
+		</dependency>	
+		<!-- JSTL 1.2 라이브러리 설정 -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<!-- 로깅을 위해 log4j2 2.20 라이브러리 설정 -->
+		<!-- logging 라이브러리: 개발 시, console에 출력되나 최종산출물에는 log 내용 포함되지 않음 -> but 콘솔에 찍히는 에러내용까지 최종 산출물에서 제외 해버림 -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j2-impl</artifactId>
+			<version>2.20.0</version>
+			<!-- <scope>test</scope> --> <!-- 최종산출물에 포함하기 위해 해당 코드 주석/삭제 처리 -->
+		</dependency>
+		<!-- Lombok 라이브러리 설정 -->
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>1.18.34</version>
+		</dependency>
+		<!-- Spring Context 라이브러리 설정 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework-version}</version>
+		</dependency>
+		<!-- Spring WebMVC 라이브러리 설정 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework-version}</version>
+		</dependency>
+		
+		<!-- JSON 라이브러리 설정 -->
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20240303</version>
+		</dependency>
+		
+		<!-- DTO를 JSON으로 변환하는 라이브러리 설정 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.17.2</version>
+		</dependency>
+		
+		<!-- @Valid 사용을 위한 라이브러리 설정 -->
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>2.0.1.Final</version>
+		</dependency>
+	</dependencies>  
+	
+	<repositories>
+	    <repository>
+	      <snapshots>
+	        <enabled>false</enabled>
+	      </snapshots>
+	      <id>mycompany</id>
+	      <name>MyRepository</name>
+	      <url>https://www.mycompany/repository/maven2</url>
+	    </repository>
+	  </repositories>
+  
+  <!-- 빌드할 때 사용할 JDK 버전 및 WAR 파일 생성 플러그인을 등록 -->  
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.7.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.1</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>

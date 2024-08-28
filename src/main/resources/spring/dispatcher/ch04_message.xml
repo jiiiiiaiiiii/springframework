@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- bean: 관리객체를 만듦 -->
+	<bean id="messageSource"
+			 class="org.springframework.context.support.ResourceBundleMessageSource">
+			 <property name="basenames">
+			 		<list>
+			 			<!-- 다국어 처리를 하는 Properties 설정 -->
+			 			<value>message/ch04_error</value>
+			 		</list>
+			 </property>
+			 <property name="defaultEncoding"  value="UTF-8"></property>
+	</bean>
+</beans>

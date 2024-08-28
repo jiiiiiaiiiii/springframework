@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+	  <!-- [%t]: thread명, %-5level: 좌측정렬 5칸의 공간에 로그레벨 출력, .%M(): 메소드명 -->
+<!--       <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/> -->
+      <PatternLayout pattern="%-5level %logger{36}.%M() - %msg%n"/>
+     <!--  WARN  com.mycompany.springframework.Main.main() - 로그 메시지
+	  WARN  com.mycompany.springframework.Main.methodA() - 로그 메시지 -->
+    </Console>
+  </Appenders>
+  <Loggers>
+  <!-- Root: src/main/java => 외부 라이브러리 포함 => 레벨 "error"이상의 설정 지향-->
+    <Root level="error">
+      <AppenderRef ref="Console"/>
+    </Root>
+    <!-- Logger: 특정패키지의 로그만 출력하고 싶을 때의 설정 -->
+    <!-- additivity="false" : 로그메세지 한번씩만 출력 -->
+    <!-- level="warn" : warn레벨 '이상'의 메세지만 출력 -->
+    <Logger name="com.mycompany.springframework" level="info" additivity="false" >
+    	<AppenderRef ref="Console"/>
+    </Logger>
+  </Loggers>
+</Configuration>
