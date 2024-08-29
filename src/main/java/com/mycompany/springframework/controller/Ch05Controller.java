@@ -22,6 +22,7 @@ public class Ch05Controller {
 	public String header(@RequestHeader("User-Agent") String userAgent,
 			HttpServletRequest request,
 			Model model) {
+		model.addAttribute("chNum", "ch05");
 		log.info("userAgent: " + userAgent);
 		
 		// 헤더값을 얻는 방법2
@@ -45,7 +46,8 @@ public class Ch05Controller {
 	}
 	
 	@GetMapping("/createCookie")
-	public String createCookie(HttpServletResponse response) {
+	public String createCookie(HttpServletResponse response, Model model) {
+		model.addAttribute("chNum", "ch05");
 		// 쿠키 생성
 		Cookie cookie1 = new Cookie("mid", "user1");
 		Cookie cookie2 = new Cookie("memail", "user1@mycompany.com");
@@ -74,6 +76,8 @@ public class Ch05Controller {
 			@CookieValue("mid") String mid,	  // mid이름의 쿠키 값을 매개변수 mid에 넣어줌
 			@CookieValue("memail") String memail,
 			Model model){
+		
+		model.addAttribute("chNum", "ch05");
 		
 		log.info("mid: " + mid);
 		log.info("memail: " + memail);

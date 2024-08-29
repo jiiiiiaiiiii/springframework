@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 public class Ch06Controller {
 	@GetMapping("/forward")
 	public String forward(Model model, HttpServletRequest request) {
+		model.addAttribute("chNum", "ch06");
+		
 		Ch06Member member = new Ch06Member();
 		member.setMid("user1");
 		member.setMname("사용자1");
@@ -52,7 +54,9 @@ public class Ch06Controller {
 	}
 	
 	@GetMapping("/sessionData")
-	public String sessionData(HttpSession session) {
+	public String sessionData(HttpSession session, Model model) {
+		model.addAttribute("chNum", "ch06");
+		
 		// 세션에서 찾아오기(읽기)
 		Ch06Member member = (Ch06Member) session.getAttribute("member");
 		
@@ -63,7 +67,9 @@ public class Ch06Controller {
 	}
 	
 	@GetMapping("/cartview")
-	public String cartview(HttpSession session) {
+	public String cartview(HttpSession session, Model model) {
+		model.addAttribute("chNum", "ch06");
+		
 		/*Ch06Cart cart = (Ch06Cart) session.getAttribute("cart");
 		
 		if(cart == null) {
@@ -87,6 +93,8 @@ public class Ch06Controller {
 	
 	@GetMapping("/productlist")
 	public String productlist(Model model) {
+		model.addAttribute("chNum", "ch06");
+		
 		List<Ch06Item> productList = new ArrayList<>();
 		for(int i = 1; i <= 5; i++) {
 			Ch06Item item = new Ch06Item();

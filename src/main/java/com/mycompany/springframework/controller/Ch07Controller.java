@@ -17,6 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 public class Ch07Controller {
 	@GetMapping("/objectScope1")
 	public String objectScope1(HttpServletRequest request, HttpSession session, Model model) {
+		model.addAttribute("chNum", "ch07");
+		
 		// Request 사용 범위(요청과 헤더 사이에 사용할 수 있는 범위)
 		request.setAttribute("key1", "value1");
 		model.addAttribute("key2", "value2");		
@@ -33,7 +35,7 @@ public class Ch07Controller {
 
 	@GetMapping("/objectScope2")
 	public String objectScope2(HttpServletRequest request, HttpSession session, Model model) {
-
+		model.addAttribute("chNum", "ch07");
 		return "ch07/objectScope";
 	}
 }

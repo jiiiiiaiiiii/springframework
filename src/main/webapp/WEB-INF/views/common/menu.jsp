@@ -128,7 +128,7 @@
   <div class="accordion-item">
   <h2 class="accordion-header">
     <button class="accordion-button ${chNum=='ch08'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch08" aria-expanded="${chNum=='ch08'}" aria-controls="ch08">
-      Ch08. 데이터(객체) 사용 범위 및 데이터 전달
+      Ch08. 세션 지원 API
     </button>
   </h2>
   <div id="ch08" class="accordion-collapse collapse ${chNum=='ch08'?'show':''}" data-bs-parent="#accordionMenu">
@@ -141,5 +141,7 @@
     </div>
   </div>
 </div>
+  
+  
   
 </div>
