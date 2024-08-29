@@ -129,10 +129,12 @@ public class Ch06Controller {
 			}
 		}
 		
+		// for문 실행 중간에 item 삭제 -> error 발생
+		// for문은 정해진 반복횟수를 실행해야 하나, 중간에 아이템이 삭제됨에 따라 오류가 발생하는 것임
+		
 		/*for (Ch06Item item : cart.getContents()) {
 			if (item.getPno().equals(pno)) {
 				cart.removeItem(item);
-				return "redirect:/ch06/cartview";
 			}			
 		}*/
 		return "redirect:/ch06/cartview";
