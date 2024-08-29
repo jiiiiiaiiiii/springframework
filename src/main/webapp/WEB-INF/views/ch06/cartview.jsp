@@ -21,7 +21,7 @@
 		<c:forEach items="${cart.contents}" var="item">
 			<li class="m-2">
 				<span>${item.pname}</span> <!-- ${el}: 바로 필드로 접근하는 형태로 작성하나, getter에서 return받은 값이 저장됨 -->
-				<a href="deleteItem?pno=${item.pno}" class="btn btn-danger btn-sm">삭제</a>
+				<a href="deleteitem?pno=${item.pno}" class="btn btn-danger btn-sm">삭제</a>
 			</li>
 		</c:forEach>
 		</ul>

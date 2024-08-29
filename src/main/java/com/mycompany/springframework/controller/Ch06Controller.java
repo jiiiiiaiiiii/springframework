@@ -1,5 +1,9 @@
 package com.mycompany.springframework.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -60,7 +64,7 @@ public class Ch06Controller {
 	
 	@GetMapping("/cartview")
 	public String cartview(HttpSession session) {
-		Ch06Cart cart = (Ch06Cart) session.getAttribute("cart");
+		/*Ch06Cart cart = (Ch06Cart) session.getAttribute("cart");
 		
 		if(cart == null) {
 			session.setAttribute("cart", new Ch06Cart());
@@ -76,8 +80,62 @@ public class Ch06Controller {
 			item.setPno("p2");
 			item.setPname("상품2");
 			cart.addItem(item);
-		}
+		}*/
 		
 		return "ch06/cartview";
+	}
+	
+	@GetMapping("/productlist")
+	public String productlist(Model model) {
+		List<Ch06Item> productList = new ArrayList<>();
+		for(int i = 1; i <= 5; i++) {
+			Ch06Item item = new Ch06Item();
+			item.setPno("p" + i);
+			item.setPname("상품" + i);
+			productList.add(item);
+		}
+		model.addAttribute("productList", productList);
+		return "ch06/productlist";
+	}
+	
+	@GetMapping("/cartadd")
+	public String cartadd(Ch06Item item, HttpSession session) {
+		// 세션에서 Ch06Cart 가져오기
+		Ch06Cart cart = (Ch06Cart) session.getAttribute("cart");
+		
+		// 만약 Ch06Cart 객체가 없다면 새로 생성해서 세션에 저장
+		if(cart == null) {
+			cart = new Ch06Cart();
+			session.setAttribute("cart", cart);
+		}
+		// 	상품 아이템을 Ch06Cart에 추가
+		cart.addItem(item);
+		
+		return "redirect:/ch06/cartview";
+	}
+	
+	@GetMapping("/deleteitem")
+	public String deleteitem(String pno, HttpSession session) {
+		// 세션에서 Ch06Cart 가져오기
+		Ch06Cart cart = (Ch06Cart) session.getAttribute("cart");			
+		
+		// 삭제할 pid를 찾아서 장바구니에서 제거
+		Iterator<Ch06Item> iterator = cart.getContents().iterator();
+		
+		while(iterator.hasNext()) {
+			Ch06Item item = iterator.next();
+			if(item.getPno().equals(pno)) {
+				iterator.remove();
+			}
+		}
+		
+		/*for (Ch06Item item : cart.getContents()) {
+			if (item.getPno().equals(pno)) {
+				cart.removeItem(item);
+				return "redirect:/ch06/cartview";
+			}			
+		}*/
+		return "redirect:/ch06/cartview";
+	
 	}
 }
