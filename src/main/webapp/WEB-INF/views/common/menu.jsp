@@ -102,6 +102,7 @@
       		<li><a href="${pageContext.request.contextPath}/ch06/forward">포워드</a></li>
       		<li><a href="${pageContext.request.contextPath}/ch06/redirect">리다이렉트</a></li>
       		<li><a href="${pageContext.request.contextPath}/ch06/sessionData">다른 요청시 세션 데이터 이용</a></li>
+      		<li><a href="${pageContext.request.contextPath}/ch06/cartview">장바구니 보기</a></li>
       	</ul>
       </div>
     </div>
