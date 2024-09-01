@@ -31,13 +31,28 @@
       <servlet-name>dispatcher</servlet-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
-         <param-name>contextConfigLocation</param-name>
+         <param-name>contextConfigLocation</param-name>	<!-- 예약어로 작성 -->
          <!-- classpath는 WAR 파일내부의 WEB-INF/classes 폴더를 말함 -->
          <!-- src/main/java, src/main/resources 폴더의 내용들이 취합되어 classes에 들어감 -->
          <param-value>classpath:spring/dispatcher/*.xml</param-value>
          <!-- <param-value>/WEB-INF/spring/dispatcher/*.xml</param-value> -->
       </init-param>
+      
+      <init-param>
+      	<!-- 요청매핑 메소드를 찾을 수 없을 때  -->
+      	<param-name>throwExceptionIfNoHandlerFound</param-name>
+      	<param-value>true</param-value>
+      </init-param>
       <load-on-startup>1</load-on-startup>
+      
+      <!-- multipart/form-data를 해석하기 위한 설정 --> 
+      <multipart-config>
+      	<location>C:/Temp</location>	<!-- 임시파일 폴더 -->
+      	<max-file-size>20971520</max-file-size>	<!-- 20MB / 1개의 파일당 최대크기 -->
+      	<max-request-size>104857600</max-request-size>	<!-- 전체요청의 크기 (문자파트의 크기 + 모든 파일 크기[max-file-size*파일업로드 가능 갯수]...)-->
+      	<file-size-threshold>1024</file-size-threshold>	<!-- byte 단위 -->
+      	<!-- 파일의 크기가 fize-size-threshold 값 이하라면 임시파일을 생성하지 않고 메모리에서 즉시 파일을 읽어서 생성할 수 있음-->
+      </multipart-config>
    </servlet>
    <!--
    4) 브라우저(클라이언트)가 요청하는 모든 URL을 DispatcherServlet이 처리하도록 설정
@@ -81,9 +96,9 @@
     	<url-pattern>/*</url-pattern>
     </filter-mapping> 
     -->
+    
+    <!-- <error-page>
+    	<error-code>404</error-code>
+    	<location>/WEB-INF/views/ch10/404.jsp</location>
+    </error-page> -->
 </web-app>
-
-
-
-
-
