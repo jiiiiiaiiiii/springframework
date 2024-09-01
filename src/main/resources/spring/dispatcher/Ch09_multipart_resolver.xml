@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 서블릿api가 해석한 결과를 MultipartFile 관리객체로 만듦 
+			=> Ch09FileUploadForm dto의 "MultipartFile" attach에 저장됨 -->
+	<bean id="multipartResolver"
+			  class = "org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </bean>
+	
+</beans>
