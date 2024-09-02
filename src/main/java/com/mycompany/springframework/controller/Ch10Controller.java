@@ -30,7 +30,7 @@ public class Ch10Controller {
 	@GetMapping("/handlingException2")
 	public String handlingException2(String data, Model model) {
 		if(data.equals("java")) {
-				// data를 브라우저가 제공되지 않을 경우, NullPointerException
+			// data를 브라우저가 제공되지 않을 경우, NullPointerException
 		} 
 		return "redirect:/";
 	}

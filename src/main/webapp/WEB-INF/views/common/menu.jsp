@@ -177,5 +177,19 @@
   </div>
 </div>
   
+  <div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button ${chNum=='ch11'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch11" aria-expanded="${chNum=='ch11'}" aria-controls="ch11">
+      Ch11. 국제화(다국어) 처리
+    </button>
+  </h2>
+  <div id="ch11" class="accordion-collapse collapse ${chNum=='ch11'?'show':''}" data-bs-parent="#accordionMenu">
+    <div class="accordion-body">
+      <ul>
+        <li><a href="${pageContext.request.contextPath}/ch11/joinForm">다국어 처리된 폼</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
   
 </div>
