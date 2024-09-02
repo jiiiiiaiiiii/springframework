@@ -14,6 +14,7 @@
 		<config>src/main/resources/spring/dispatcher/ch02_interceptor.xml</config>
 		<config>src/main/resources/spring/dispatcher/Ch09_multipart_resolver.xml</config>
 		<config>src/main/resources/spring/dispatcher/ch04_ch11_message.xml</config>
+		<config>src/main/resources/spring/root/ch12_create_bean_by_xml.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
