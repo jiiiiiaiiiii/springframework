@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- "기본생성자"를 호출해서 관리객체로 생성(xml 설정으로 관리객체로 만듦) -->
-	<!-- id: 식별이름, 보통은 class의 첫자를 소문자로 하여 지정, 생략할 경우 내부적으로 지정됨, 참조할 경우 명시적으로 작성하는 것이 좋음 -->
+	<!-- id(xml에서 unique한 값)/name(spring에서 unique한 값): 식별이름
+	       보통은 class의 첫자를 소문자로 하여 지정, 생략할 경우 내부적으로 지정됨, 참조할 경우 명시적으로 작성하는 것이 좋음 -->
 	<bean 
 		id="ch12Service1"
 		class="com.mycompany.springframework.service.Ch12Service1" />
@@ -26,6 +27,40 @@
 		id="ch12Service3"
 		factory-bean="ch12Service2"
 		factory-method="getCh12Service3" />
+		
+	<!-- Setter 주입(기본생성자, property 이용) -->
+	<!-- 기본생성자로 객체를 만들고, 객체 주입 -->
+	<bean
+		id="ch12Service5"
+		class="com.mycompany.springframework.service.Ch12Service5">
+		<!-- "property"의 속성
+			 [name]: setter이름
+				- "set"지우고, 첫글자 소문자로 => setDao1일 경우, dao1로 입력
+			 [ref]: 참조하는 관리객체의 식별이름(주입)
+				- 클래스명의 첫문자를 소문자로 
+			 [value]: 단순값 -->
+		<property name="dao1" ref="ch12Dao1"/>
+		<property name="dao2" ref="ch12Dao2"/>
+		<property name="field3" value="mobile"/>
+		<property name="field4" value="3"/>
+	</bean>
+	
+	<!-- Constructor 주입(매개변수 생성자) -->
+	<bean
+		id="ch12Service6"
+		class="com.mycompany.springframework.service.Ch12Service6">
+		<!-- 생성자의 arg 순서로 작성 -->
+		<constructor-arg ref="ch12Dao1" />	
+		<constructor-arg ref="ch12Dao2" />
+	</bean>
+	
+	<!-- properties의 값을 주입 -->
+	<!-- 동일한 id의 객체가 있을 경우, 새로 만들지 않고 기존 객체를 활용 -->
+	<bean 
+		id="ch12Service9"
+		class="com.mycompany.springframework.service.Ch12Service9">
+		<property name="prop4" value="${prop4}"/>
+	</bean>
 </beans>
 
 
