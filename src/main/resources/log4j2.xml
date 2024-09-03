@@ -20,5 +20,10 @@
     <Logger name="com.mycompany.springframework" level="info" additivity="false" >
     	<AppenderRef ref="Console"/>
     </Logger>
+    
+    <!-- log4jdbc 설정 -->
+    <Logger name="jdbc.sqltiming" level="info" additivity="false" >
+    	<AppenderRef ref="Console"/>
+    </Logger>
   </Loggers>
 </Configuration>

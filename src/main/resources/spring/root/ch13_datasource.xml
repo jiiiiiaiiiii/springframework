@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- DataSource (Connection Pool) 설정 -->
+	<bean
+		id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">	<!-- DB 커넥션 안전하게 종료 -->
+		
+		<!-- DB 연결시 사용 -->
+		<!-- 
+		<property name="driverClassName" value="oracle.jdbc.oracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@kosa160.iptime.org:1521:orcl"/>
+			 -->
+		<!-- 로깅을 위하여 driverClassName, url를 아래와 같이 설정  -->	 
+		<property name="driverClassName" value="net.sf.log4jdbc.DriverSpy" />
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@kosa160.iptime.org:1521:orcl"/>
+		<property name="username" value="user_spring" />
+		<property name="password"  value="oracle" />
+		
+		<!-- Connection Pool 관리 목적 -->
+		<property name="initialSize" value="2"/> 	<!-- 처음 몇개의 커넥션을 생성할 것인지 -->
+		<property name="maxTotal" value="4" />		<!-- 커넥션 풀이 가질 수 있는 최대 커넥션 수 -->
+		<property name="maxIdle" value="2" />		<!-- Connection Pool에 반납할 때 최대로 유지될 수 있는 커넥션의 갯수: 대게, initialSize와 동일하게 설정 -->
+	</bean>
+	
+</beans>

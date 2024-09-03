@@ -10,5 +10,4 @@ public class Ch12Service4 {
 	public Ch12Service4() {
 		log.info("실행");
 	}
-
 }

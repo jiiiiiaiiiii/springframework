@@ -62,9 +62,3 @@
 		<property name="prop4" value="${prop4}"/>
 	</bean>
 </beans>
-
-
-
-
-
-
