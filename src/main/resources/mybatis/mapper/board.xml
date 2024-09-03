@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- mapper와 dao 인터페이스 연결 -->
+<!-- mybatis가 dao 인터페이스의 구현클래스(객체) 생성 -> 관리객체로 만듦 -->
+<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13BoardDao">
+	<!-- id: 인터페이스(DAO)의 추상메서드 -->
+	<!-- 	parameterType
+			- mapper-config.xml에서 정의한 alias 이름..이면서 
+			- 인터페이스(DAO) 추상메서드의 매개변수가 됨 -->
+	<insert id="insert" parameterType="Board">
+		<!-- bno는 값을 알 수 x -> nextval값 -->
+		insert into board (
+			bno, btitle, bcontent, bdate, mid, bhitcount, 
+         	battachoname, battachsname, battachtype, battachdata
+		) values (
+			seq_bno.nextval, #{btitle}, #{bcontent}, sysdate, #{mid},  0,
+			#{battachoname}, #{battachsname},	#{battachtype},	#{battachdata}
+		)
+	</insert>
+</mapper>
