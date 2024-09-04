@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.springframework.dao.mybatis.Ch13BoardDao;
 import com.mycompany.springframework.dto.Ch13Board;
+import com.mycompany.springframework.dto.Ch13Pager;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,8 +18,8 @@ public class Ch13BoardService {
 	private Ch13BoardDao boardDao;	// mybatis가 생성한 Ch13BoardDao 인터페이스의 구현 객체(관리객체)
 	
 	//Ch13Board 하나의 객체 = 하나의 행 => List
-	public List<Ch13Board> getBoardList() {
-		List<Ch13Board>list = boardDao.selectList();
+	public List<Ch13Board> getBoardList(Ch13Pager pager) {
+		List<Ch13Board>list = boardDao.selectList(pager);
 		return list;
 	}
 	
@@ -36,11 +37,16 @@ public class Ch13BoardService {
 		int bno = board.getBno();
 	}
 	
-	public void updateBoard(Ch13Board board) {
+	public void updateBoard(Ch13Board board) { 
 		
 	}
 	
 	public void deleteBoard(int bno) {
 		
+	}
+
+	public int getTotalRows() {
+		int totalRows = boardDao.countRows();
+		return totalRows;
 	}
 }

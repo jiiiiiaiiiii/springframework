@@ -21,8 +21,25 @@
 		)
 	</insert>
 	
-	<select id="selectList" resultType="Board">
-		select bno, btitle, bdate, mid, bhitcount
-		from board
+	<!-- <![CDATA[~문자열로 인식~]] -->
+	<!-- resultType: 하나의 행에 대한 객체타입 -->
+	<select id="selectList" parameterType="Pager" resultType="Board">
+		<![CDATA[
+			select  bno, btitle, mid, bdate, bhitcount
+			from    (
+			            select rownum as rnum, bno, btitle, mid, bdate, bhitcount
+			            from (
+			                    select bno, btitle, mid, bdate, bhitcount
+			                    from board
+			                    order by bno desc
+			            )
+			    		where rownum <= #{endRowNo}
+			    )
+				where rnum >= #{startRowNo}
+		]]>
+	</select>
+	
+	<select id="countRows" resultType="int">
+		select count(*) from board
 	</select>
 </mapper>
