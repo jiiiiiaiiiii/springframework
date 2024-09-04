@@ -2,6 +2,7 @@ package com.mycompany.springframework.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,8 +48,17 @@ public class Ch13Controller {
 			battach.transferTo(file);
 		}
 		
-		boardService.wirteBoard(board);	// 서비스로 dto 넘김
+		boardService.writeBoard(board);	// 서비스로 dto 넘김
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("/boardList")
+	public String boardList(Model model) {
+		model.addAttribute("chNum", "ch13");
+		
+		List<Ch13Board> list = boardService.getBoardList();
+		model.addAttribute("list", list);
+		return "ch13/boardList";
 	}
 }

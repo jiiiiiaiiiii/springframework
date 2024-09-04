@@ -18,7 +18,8 @@ public class Ch13BoardService {
 	
 	//Ch13Board 하나의 객체 = 하나의 행 => List
 	public List<Ch13Board> getBoardList() {
-		return null;
+		List<Ch13Board>list = boardDao.selectList();
+		return list;
 	}
 	
 	public Ch13Board getBoard(int bno) {
@@ -26,9 +27,13 @@ public class Ch13BoardService {
 	}
 	
 	// dto 형태로 매개변수를 받는 것이 좋음
-	public void wirteBoard(Ch13Board board) {
+	public void writeBoard(Ch13Board board) {
 		log.info("실행");
+		log.info("insert 전 bno: " + board.getBno());
 		boardDao.insert(board);
+		log.info("insert 후 bno: " + board.getBno());
+		//bno를 이용해서 추가적인 비지니스 로직을 작성해야 할 경우
+		int bno = board.getBno();
 	}
 	
 	public void updateBoard(Ch13Board board) {
