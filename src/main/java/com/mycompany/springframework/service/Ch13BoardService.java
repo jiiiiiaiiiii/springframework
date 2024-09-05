@@ -24,7 +24,8 @@ public class Ch13BoardService {
 	}
 	
 	public Ch13Board getBoard(int bno) {
-		return null;
+		Ch13Board board = boardDao.selectByBno(bno);
+		return board;
 	}
 	
 	// dto 형태로 매개변수를 받는 것이 좋음
@@ -38,15 +39,24 @@ public class Ch13BoardService {
 	}
 	
 	public void updateBoard(Ch13Board board) { 
-		
+		boardDao.update(board);
 	}
 	
 	public void deleteBoard(int bno) {
-		
+		boardDao.delete(bno);
 	}
 
 	public int getTotalRows() {
 		int totalRows = boardDao.countRows();
 		return totalRows;
+	}
+
+	public Ch13Board getBoardAttach(int bno) {
+		Ch13Board board = boardDao.selectAttachByBno(bno);
+		return board;
+	}
+
+	public void addHitcount(int bno) {
+		boardDao.updateHitcount(bno);
 	}
 }

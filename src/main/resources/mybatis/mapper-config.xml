@@ -3,6 +3,8 @@
 <configuration>
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL"/>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- column이름의 "_"(underbar)를 camelCase로 인식  -->
 	</settings>
 
 	<typeAliases>

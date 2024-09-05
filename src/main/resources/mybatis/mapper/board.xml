@@ -21,7 +21,7 @@
 		)
 	</insert>
 	
-	<!-- <![CDATA[~문자열로 인식~]] -->
+	<!-- <![CDATA[~문자열로 인식~]]: 꺽쇠 등을 이스케이프 문자로 쓰지 않기 위함 -->
 	<!-- resultType: 하나의 행에 대한 객체타입 -->
 	<select id="selectList" parameterType="Pager" resultType="Board">
 		<![CDATA[
@@ -42,4 +42,46 @@
 	<select id="countRows" resultType="int">
 		select count(*) from board
 	</select>
+	
+	<!-- parameterType int 값 1개인 경우 
+		#{변수명} : 변수명 상관없이 값 대입 =>#{value} 등등....
+	-->
+	<select id="selectByBno" parameterType="int" resultType="Board">
+		select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<select id="selectAttachByBno" parameterType="int" resultType="Board">
+		select battachoname, battachtype, battachdata
+		from board
+		where bno=#{bno}
+	</select>
+	
+	 <!-- 동적 sql의 작성
+	   1) if의 test절에서 ${} 사용불가
+	   2) ","의 위치 주의 --> 
+	<update id="update" parameterType="Board">
+		update board set
+			btitle=#{btitle},
+			bcontent=#{bcontent}
+			<if test="battachoname != null">	
+				,
+				battachoname=#{battachoname},
+				battachtype=#{battachtype},
+				battachdata=#{battachdata}
+			</if>
+		where bno=#{bno}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from board
+		where bno=#{bno}
+	</delete>
+	
+	<update id="updateHitcount" parameterType="int">
+		update board set 
+			bhitcount=bhitcount+1
+		where bno=#{bno}
+	</update>
 </mapper>
