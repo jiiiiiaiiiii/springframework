@@ -1,7 +1,5 @@
 package com.mycompany.springframework.controller;
 
-import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +31,8 @@ public class Ch13Controller {
 		return "ch13/writeBoardForm";
 	}
 	
-	@PostMapping("/writeBoard")
+	// 방법1. 파일시스템에 저장
+	/*@PostMapping("/writeBoard")
 	public String writeBoard(Ch13WriteBoardForm form) throws Exception {
 		Ch13Board board = new Ch13Board();
 		board.setBtitle(form.getBtitle());
@@ -53,7 +52,25 @@ public class Ch13Controller {
 		boardService.writeBoard(board);	// 서비스로 dto 넘김
 		
 		return "redirect:/";
-	}
+	}*/
+	
+	
+	// 방법2. DB에 저장
+	@PostMapping("/writeBoard")
+	public String writeBoard(Ch13WriteBoardForm form) throws Exception {
+		Ch13Board board = new Ch13Board();
+		board.setBtitle(form.getBtitle());
+		board.setBcontent(form.getBcontent());
+		board.setMid("user");
+		MultipartFile battach = form.getBattach();
+		if(!battach.isEmpty()) {
+			board.setBattachoname(battach.getOriginalFilename());
+			board.setBattachtype(battach.getContentType());
+			board.setBattachdata(battach.getBytes());		// getBytes(): 파일 자체의 데이터 얻기
+		}
+		boardService.writeBoard(board);	
+		return "redirect:/";
+	}	
 	
 	@GetMapping("/boardList")
 	public String boardList(Model model,
