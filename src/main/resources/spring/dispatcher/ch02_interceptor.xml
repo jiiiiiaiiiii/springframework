@@ -5,12 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<!-- 	<mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			모든 요청에 대하여 동작
+			<!-- 모든 요청에 대하여 동작 -->
 			<mvc:mapping path="/**" />
 			<bean class="com.mycompany.springframework.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
- -->
+
 </beans>

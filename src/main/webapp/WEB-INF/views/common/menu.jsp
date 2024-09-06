@@ -216,6 +216,8 @@
   <div id="ch13" class="accordion-collapse collapse ${chNum=='ch13'?'show':''}" data-bs-parent="#accordionMenu">
     <div class="accordion-body">
       <ul>
+        <li><a href="${pageContext.request.contextPath}/ch13/joinForm">회원가입</a></li>
+        <li><a href="${pageContext.request.contextPath}/ch13/loginForm">로그인</a></li>
         <li><a href="${pageContext.request.contextPath}/ch13/writeBoardForm">게시물 쓰기</a></li>
         <li><a href="${pageContext.request.contextPath}/ch13/boardList">게시물 목록</a></li>
       </ul>
