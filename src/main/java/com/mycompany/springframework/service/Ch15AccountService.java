@@ -23,9 +23,14 @@ public class Ch15AccountService {
 		List<Ch13Account> list = accountDao.selectAll();
 		return list;
 	}
+	
+	public Ch13Account getAccount(int ano) {
+		Ch13Account account = accountDao.selectByAno(ano);
+		return account;
+	}
 
 	@Transactional
-	public void transfer(String fromAno, String toAno, int amount) {
+	public void transfer(int fromAno, int toAno, int amount) {
 		// 출금작업
 		Ch13Account fromAccount = accountDao.selectByAno(fromAno);
 		if(fromAccount == null) {

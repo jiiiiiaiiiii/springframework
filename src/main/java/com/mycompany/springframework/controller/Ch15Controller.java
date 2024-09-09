@@ -32,7 +32,7 @@ public class Ch15Controller {
 	}
 	
 	@PostMapping("/transfer")
-	public String transfer(String fromAno, String toAno, int amount) {
+	public String transfer(int fromAno, int toAno, int amount) {
 		accountService.transfer(fromAno, toAno, amount);
 		return "redirect:/ch15/accountList";
 	}

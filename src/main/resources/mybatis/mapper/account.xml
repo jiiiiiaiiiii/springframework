@@ -7,7 +7,7 @@
 		from account
 	</select>
 	
-	<select id="selectByAno" parameterType="String" resultType="Account">
+	<select id="selectByAno" parameterType="int" resultType="Account">
 		select ano, owner, balance 
 		from account
 		where ano=#{ano}

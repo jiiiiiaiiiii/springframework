@@ -9,6 +9,6 @@ import com.mycompany.springframework.dto.Ch13Account;
 @Mapper
 public interface Ch13AccountDao {
 	public List<Ch13Account> selectAll();
-	public Ch13Account selectByAno(String fromAno);
+	public Ch13Account selectByAno(int fromAno);
 	public int update(Ch13Account fromAccount);
 }
