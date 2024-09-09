@@ -35,4 +35,12 @@ public class Ch10ExceptionHandler {
 		model.addAttribute("chNum","ch10");
 		return "ch10/404";
 	}
+	
+	@ExceptionHandler(Ch15AccountNotExistException.class)
+	public String Ch15AccountNotExistException(
+			Model model, Ch15AccountNotExistException e) {
+		model.addAttribute("chNum","ch15");
+		model.addAttribute("errorMessage", e.getMessage());
+		return "ch15/accountNotExistException";
+	}
 }

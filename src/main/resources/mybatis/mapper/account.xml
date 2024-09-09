@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13AccountDao"/>	
-<!-- mapper와 dao 인터페이스 연결 -->
+<mapper namespace="com.mycompany.springframework.dao.mybatis.Ch13AccountDao">
+	<!-- resultType: '한 행'을 어떤 객체로 맵핑할 것인가 -->
+	<select id="selectAll" resultType="Account">
+		select ano, owner, balance 
+		from account
+	</select>
+	
+	<select id="selectByAno" parameterType="String" resultType="Account">
+		select ano, owner, balance 
+		from account
+		where ano=#{ano}
+	</select>
+	
+	<update id="update" parameterType="Account">
+		update account set
+			balance=#{balance}
+		where ano=#{ano}
+	</update>
+</mapper>	
