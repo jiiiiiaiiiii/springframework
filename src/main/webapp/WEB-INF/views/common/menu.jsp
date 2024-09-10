@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
-    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+ 
 <div class="accordion" id="accordionMenu">
   <div class="accordion-item">
     <h2 class="accordion-header">
@@ -260,4 +261,30 @@
     </div>
   </div>
 </div> 
+
+<div class="accordion-item">
+  <h2 class="accordion-header">
+    <button class="accordion-button ${chNum=='ch17'?'':'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#ch17" aria-expanded="${chNum=='ch17'}" aria-controls="ch17">
+      Ch17. Spring Security
+    </button>
+  </h2>
+  <div id="ch17" class="accordion-collapse collapse ${chNum=='ch17'?'show':''}" data-bs-parent="#accordionMenu">
+    <div class="accordion-body">
+      <ul>
+        <li>
+        	<sec:authorize access="isAnonymous()">
+        		<a href="${pageContext.request.contextPath}/ch17/loginForm">로그인</a>
+        	</sec:authorize>
+        	<sec:authorize access="isAuthenticated()">
+        		<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+        	</sec:authorize>
+        </li>
+        
+        <li><a href="${pageContext.request.contextPath}/ch17/authorityCheck">권한별 내용보기</a></li>
+        <li><a href="${pageContext.request.contextPath}/ch17/userInfo">로그인한 사용자 정보보기</a></li>
+      </ul>
+    </div>
+  </div>
+</div> 
+
 </div>
