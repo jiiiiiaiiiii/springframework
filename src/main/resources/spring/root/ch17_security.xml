@@ -26,7 +26,7 @@
 			success-handler-ref="ch17LogoutSuccessHandler"/> <!-- Failure는 없음 -->
 		
 		<!-- 사이트간 요청 위조 방지 비활성화 -->
-		<security:csrf disabled="true"/>	
+		<security:csrf disabled="true"/>
 		
 		<!-- 권한이 불충분할 경우 이동할 경로 -->
 		<!-- 

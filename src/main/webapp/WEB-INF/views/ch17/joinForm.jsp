@@ -7,6 +7,8 @@
 	<div class="card-header">회원 가입</div>
 	<div class="card-body">
        <form id="joinForm" method="post" action="join">
+       <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+       
          <div class="input-group">
             <div class="input-group-prepend"><span class="input-group-text">아이디</span></div>
             <input id="mid" type="text" name="mid" class="form-control" value="${ch13Member.mid}"/>
