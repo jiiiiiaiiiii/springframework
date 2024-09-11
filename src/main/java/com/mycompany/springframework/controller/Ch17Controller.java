@@ -1,5 +1,6 @@
 package com.mycompany.springframework.controller;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,4 +47,32 @@ public class Ch17Controller {
 		
 		return "ch17/userInfo";
 	}
+	
+	@Secured("ROLE_ADMIN")
+	@GetMapping("/admin/page")
+	public String adminPage() {
+		log.info("실행");
+		return "redirect:/ch17/authorityCheck";
+	}
+	
+	@Secured("ROLE_MANAGER")
+	@GetMapping("/manager/page")
+	public String managerPage() {
+		log.info("실행");
+		return "redirect:/ch17/authorityCheck";
+	}
+
+	@Secured("ROLE_USER")
+	@GetMapping("/user/page")
+	public String userPage() {
+		log.info("실행");
+		return "redirect:/ch17/authorityCheck";
+	}
+	
+	@GetMapping("/error403")
+	public String error403(Model model) {
+		model.addAttribute("chNum", "ch17");
+		return "ch17/error403";
+	}
 }
+

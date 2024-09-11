@@ -6,6 +6,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- weaving을 할 때  aspectj 라이브러리를 쓰겠다! 설정-->
+	<!-- @Secured 사용을 위한 설정 -->
 	<aop:aspectj-autoproxy />
 
 </beans>
